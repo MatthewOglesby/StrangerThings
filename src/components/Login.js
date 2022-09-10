@@ -14,7 +14,7 @@ const Login = ({ setToken, navigate }) => {
             setToken(results.data.token)
             console.log(results);
             window.localStorage.setItem('token', results.data.token);
-            navigate('/profile');
+            navigate('/home');
         } else {
             console.log(results.error.message)
             loginForm.style.animation = 'shake 0.5s'
@@ -50,7 +50,7 @@ const Login = ({ setToken, navigate }) => {
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </div>
-                <button className='submit' type='submit'>Submit</button>
+                <button className='submit' type='submit'>Login</button>
                 <p id='errorMessage'></p>
             </form>
         </div>

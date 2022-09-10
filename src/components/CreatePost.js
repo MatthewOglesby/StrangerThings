@@ -1,43 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { createPost } from '../api';
 
-const CreatePost = ({ token }) => {
-    let newTitle = document.getElementById('newTitle')
-    let newDescription = document.getElementById('newDescription')
-    let newPrice = document.getElementById('newTitle')
-    let newLocation = document.getElementById('newTitle')
-    let newDeliver = document.getElementById('newTitle')
+const CreatePost = ({ token, fetchPosts, navigate }) => {
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState('')
+    const [location, setLocation] = useState('')
+    const [willDeliver, setWillDeliver] = useState(false)
 
     const newPost = {
-        title: newTitle,
-        description: newDescription,
-        price: newPrice,
-        location: newLocation,
-        willDeliver: newDeliver
+        title,
+        description,
+        price,
+        location,
+        willDeliver
     }
 
     async function addPost() {
         const result = await createPost(token, newPost)
-        console.log(result)
+        fetchPosts();
+        navigate('/posts')
     }
 
     return (
         // this needs to be a form that accepts the five requests parameters
         <form className='createNewPost'>
-            <label>Title</label>
-            <input id='newTitle'></input>
-            <label>Description</label>
-            <input id='newDescription'></input>
-            <label>Price</label>
-            <input id='newPrice'></input>
-            <label>Location</label>
-            <input id='newLocation'></input>
-            <label>Delivery</label>
-            <select id="newDeliver">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <button onClick={() => addPost()}>Create a New Post</button>
+            <label className='createPostLabel1'>Title</label>
+            <input
+                className='postings1'
+                type='text'
+                onChange={(event) => setTitle(event.target.value)} />
+            <label className='createPostLabel1'>Description</label>
+            <input
+                className='postings1'
+                type='text'
+                onChange={(event) => setDescription(event.target.value)} />
+            <label className='createPostLabel1'>Price</label>
+            <input
+                className='postings1'
+                type='text'
+                onChange={(event) => setPrice(event.target.value)} />
+            <label className='createPostLabel1'>Location</label>
+            <input
+                className='postings1'
+                type='text'
+                onChange={(event) => setLocation(event.target.value)} />
+            <label className='createPostLabel1'>Delivery</label>
+            <input
+                className='postings1'
+                type='checkbox'
+                id='Yes'
+                onChange={(event) => setWillDeliver(event.target.checked)} />
+            <div className='buttonContainer'>
+                <button className='deletePost' onClick={(event) => { addPost(); event.preventDefault() }}>Create Post</button>
+            </div>
         </form>
     )
 }

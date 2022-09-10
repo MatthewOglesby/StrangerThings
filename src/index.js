@@ -12,7 +12,8 @@ import {
     Register,
     Login,
     CreatePost,
-    SinglePostView
+    SinglePostView,
+    EditPost
 } from './components'
 
 
@@ -23,16 +24,14 @@ const App = () => {
 
     const navigate = useNavigate();
 
-    console.log(user) 
-    // can log the token of login if interested in seeing it
+    
+    // can log the token of login or user if interested in seeing it
 
     function logout() {
         window.localStorage.removeItem('token');
         setToken('')
         setUser({});
     }
-
-    console.log(posts)
 
     async function fetchPosts() {
         const results = await getPosts(token)
@@ -65,7 +64,7 @@ const App = () => {
 
     return (
         <div className='navbarLinks'>
-            <Navbar logout={logout} token={token} />
+            <Navbar logout={logout} token={token} fetchPosts={fetchPosts}/>
             <Routes>
                 <Route
                     path='/'
@@ -73,19 +72,28 @@ const App = () => {
                 />
                 <Route
                     path='/posts'
-                    element={<Posts posts={posts} />}
+                    element={<Posts posts={posts} token={token} />}
                 />
                 <Route
                     path='/posts/:postID'
-                    element={<SinglePostView posts={ posts } />}
+                    element={<SinglePostView posts={posts} token={token} getMe={getMe}/>}
                 />
                 <Route
                     path='/profile'
-                    element={<Profile />}
+                    element={<Profile user={user} posts={posts} token={token} fetchPosts={fetchPosts}/>}
                 />
                 <Route
                     path='/posts/create-post'
-                    element={<CreatePost token={token} />}
+                    element={<CreatePost token={token} fetchPosts={fetchPosts} navigate={navigate} />}
+                />
+                <Route
+                    exact path='/posts/edit-post/:postID'
+                    element={<EditPost
+                        posts={posts}
+                        token={token}
+                        navigate={navigate}
+                        fetchPosts={fetchPosts}
+                    />}
                 />
                 <Route
                     path='/register'

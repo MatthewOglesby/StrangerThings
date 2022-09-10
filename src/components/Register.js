@@ -17,10 +17,10 @@ const handleSubmit = async() => {
         setToken(results.data.token)
         console.log(results);
         window.localStorage.setItem('token', results.data.token);
-        navigate('/profile');
+        navigate('/home');
     } else {
         console.log(results.error.message)
-        loginForm.style.animation = 'shake 0.5s'
+        loginForm.style.animation = 'shake .5s'
         errorMessage.innerText = results.error.message
         document.getElementsByName('username')[0].value = ''
         document.getElementsByName('password')[0].value = ''

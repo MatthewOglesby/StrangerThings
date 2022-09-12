@@ -24,7 +24,7 @@ const App = () => {
 
     const navigate = useNavigate();
 
-    
+    console.log(user)
     // can log the token of login or user if interested in seeing it
 
     function logout() {
@@ -68,15 +68,15 @@ const App = () => {
             <Routes>
                 <Route
                     path='/'
-                    element={<Home />}
+                    element={<Home navigate={navigate} token={token} logout={logout}/>}
                 />
                 <Route
                     path='/posts'
-                    element={<Posts posts={posts} token={token} />}
+                    element={<Posts posts={posts} token={token} navigate={navigate}/>}
                 />
                 <Route
                     path='/posts/:postID'
-                    element={<SinglePostView posts={posts} token={token} getMe={getMe}/>}
+                    element={<SinglePostView posts={posts} token={token} getMe={getMe} navigate={navigate}/>}
                 />
                 <Route
                     path='/profile'

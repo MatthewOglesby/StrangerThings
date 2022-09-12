@@ -140,14 +140,6 @@
     padding-top: .5rem;
 }
 
-.profilePosts {
-    width: 125px;
-}
-.profilePostsContainer {
-    display: flex;
-    flex-direction: row;
-}
-
 .postBody {
     display: flex;
     flex-wrap: wrap;
@@ -158,6 +150,9 @@
     flex-wrap: wrap;
     flex-direction: row;
     width: 100%;
+}
+.postBody2 {
+    padding-left: 6rem;
 }
 
 .profileContainer {
@@ -209,10 +204,14 @@
     font-size: 20px;
 }
 
-.buttonContainer {
+.buttonContainer { 
+    align-content: center;
+    padding-top: .5rem;
+}
+.buttonContainer1 {
     display: flex;
     justify-content: center;
-    padding-top: .5rem;
+    padding-top: 2rem;
 }
 
 .deletePost {
@@ -227,15 +226,63 @@
     text-decoration: none;
     color: black;
 }
+.deletePost:hover {
+    cursor: pointer;
+}
 
 #contactSeller {
-    font-size: 1rem;
-    color: black;
-    height: 2rem;
-    width: 9rem;
+    font-size: 20px;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    height: 4rem;
+    width: 12rem;
+    border-radius: 10%;
+    border: 1px black solid;
+    background-image: url(/images/blacksnow.gif);
+    background-repeat: no-repeat;
 }
 #contactSeller:hover {
     cursor: pointer;
+    background-color: #CCBCA4;
+    color: black;
+    background-image: url(/images/whitesnow.gif);
+    border-top: 2px solid #CCBCA4;
+    border-left: 2px solid #CCBCA4;
+    border-right: 2px solid #CCBCA4;
+    border-bottom: 2px solid #CCBCA4;
+    box-shadow: 5px 5px 5px #CCBCA4;
+}
+.messageForm {
+    display: flex;
+    flex-direction: row;
+}
+.messageInput {
+    height: 3rem;
+    width: 26rem;
+    font-size: 22px;
+    outline: none;
+    border-right: 1px solid white;
+    background-image: url(/images/blacksnow.gif);
+    color: white;
+}
+.messageInput:hover {
+    background-image: url(/images/whitesnow.gif);
+    border: 1px solid black;
+    outline: none;
+    color: black;
+    border-right: none;
+}
+.messageSubmit {
+    font-size: 22px;
+    color: white;
+    outline: none;
+    border: 1px solid black;
+    background-image: url(/images/blacksnow.gif);
+}
+.messageSubmit:hover {
+    cursor: pointer;
+    background-image: url(/images/whitesnow.gif);
+    color: black;
 }
 
 header {
@@ -248,9 +295,9 @@ header {
 
 .navLinks {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     font-size: 30px;
-
 }
 
 .navLinks2, .navLinks2:visited {
@@ -354,7 +401,7 @@ label {
 }
 
 body {
-    background-color: whitesmoke;
+    background-color:#F1F1F2;
 }
 
 
@@ -371,11 +418,311 @@ body {
 }
 
 #linkToSPV:hover {
-    text-decoration: underline;
-    color: blue;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
 }
-.addAPost {
+.addButtonContainer {
+    display: flex;
+    border: 3px solid #CCBCA4;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px #CCBCA4;
+    flex-direction: column;
+    width: 20rem;
+    background-color: blanchedalmond;
+    margin: 3rem;
+    font-size: 30px;
+    text-align: center;
+}
+.addButton {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 5%;
+    border: none;
+    background-image: url(/images/plus.png);
+    background-size: 5rem;
+    background-repeat: no-repeat;
+    background-color: blanchedalmond;
+    background-position: 7.5rem 12rem;
+}
+.addButtonContainer:hover {
+    background-color: #CCBCA4;
+    box-shadow: 5px 5px 5px #A39683;
+    border: 3px solid #A39683;
+}
+.addButton:hover {
+    background-color: #CCBCA4;
+    cursor: pointer;
+    background-image: url(/images/addpost.png);
+    background-size: 13rem;
+    background-position: 4rem 13rem;
+}
+.profilePosts {
+    width: 125px;
+}
+.profilePostsContainer {
+    display: flex;
+    flex-direction: row;
+}
+.messagesSentContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 33%;
+}
+.messagesSentSmallCon {
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 25px;
+    margin-left: 1rem;
+    background-color: #1982FC;
+    color: white;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    font-size: 17pt;
+    max-width: 20rem;
+    border-bottom-right-radius: 10px;
+}
+.messagesSent {
+    margin: 0 auto;
+    max-width: 242px;
+}
+.messagesReceivedContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 33%;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+.messagesReceivedSep {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    max-width: 20rem;
+    margin-bottom: 1rem;
+}
+.messagesSentSep {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    max-width: 20rem;
+    margin-bottom: 1rem;
+}
+.messagesReceivedSmallCon {
+    max-width: 200px;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 25px;
+    margin-left: 1rem;
+    line-height: 24px;
+    background-color: #e5e5ea;
+    color: black;
+    font-family: Helvetica, sans-serif;
+    font-size: 17pt;
+    border-bottom-left-radius: 10px;
     
+}
+.messagesReceived {
+    margin: 0 auto;
+}
+.receivedContent {
+    margin-top: 0.9rem;
+    margin-bottom: 0rem;
+}
+.receivedContent1{
+    margin-top: 0.1rem;
+    margin-bottom: 0.2rem;
+}
+.secondarySep {
+    max-width: 33%;
+}
+.toCenter {
+    text-align: center;
+}
+.home {
+    display: flex;
+    justify-content: center;
+}
+.homeHeader {
+    text-align: center;
+}
+.homePostsButtonCon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin-top: 2rem;
+    margin-right: 5rem;
+}
+.homePostHeader {
+    max-width: 150px;
+}
+.postsButtonContainer {
+    display: flex;
+    border-radius: 5%;
+    box-shadow: 5px 5px 10px skyblue;
+    flex-direction: column;
+    width: 20rem;
+    background-color: blanchedalmond;
+    font-size: 30px;
+    text-align: center;
+    margin-left: 5rem;
+}
+.postsButton {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 5%;
+    border: none;
+    background-image: url(/images/forest-snow.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -10rem;
+    color: white;
+    font-size: 50px;
+    text-shadow: 5px 5px 10px #dcdcdc;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.postsButton:hover {
+    cursor: pointer;
+    color: #9bddff;
+    text-shadow: 5px 5px 10px #00b7eb;
+}
+.profileButtonContainer {
+    display: flex;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px black;
+    flex-direction: column;
+    width: 20rem;
+    font-size: 30px;
+    text-align: center;
+}
+.profileButton {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 5%;
+    border: none;
+    background-image: url(/images/cabin.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -20rem;
+    color: white;
+    font-size: 50px;
+    text-shadow: 5px 5px 10px grey;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.profileButton:hover {
+    cursor: pointer;
+    color: orangered;
+    text-shadow: 5px 5px 10px red;
+}
+.homeAddButtonContainer {
+    display: flex;
+    border-radius: 5%;
+    flex-direction: column;
+    width: 20rem;
+    font-size: 30px;
+    text-align: center;
+    border-right: 3px solid #CCBCA4;
+    border-bottom: 3px solid #CCBCA4;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px #CCBCA4;
+}
+.homeAddButton {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 5%;
+    border: none;
+    background-color: blanchedalmond;
+    background-image: url(/images/plus.png);
+    background-size: 5rem;
+    background-repeat: no-repeat;
+    background-position: 7.5rem 12rem;
+    font-size: 50px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.homeAddButton:hover {
+    background-color: #CCBCA4;
+    cursor: pointer;
+    background-image: url(/images/addpost.png);
+    background-size: 13rem;
+    background-position: 4rem 13rem;
+}
+.homeAddButtonContainer:hover {
+    background-color: #CCBCA4;
+    box-shadow: 5px 5px 5px #A39683;
+    border-right: 3px solid #A39683;
+    border-bottom: 3px solid #A39683;
+}
+.homeLogoutButtonContainer {
+    display: flex;
+    border-radius: 5%;
+    flex-direction: column;
+    width: 20rem;
+    font-size: 30px;
+    text-align: center;
+    border-right: 2px solid #000080;
+    border-bottom: 2px solid #000080;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px #191970;
+}
+.homeLogoutButton {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 5%;
+    border: none;
+    background-image: url(/images/santa.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -7rem;
+    color: white;
+    font-size: 50px;
+    text-shadow: 5px 5px 10px grey;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.homeLogoutButton:hover {
+    cursor: pointer;
+    color: #e0ffff;
+    text-shadow: 5px 5px 10px #d6ffff;
+}
+.registerButtonContainer {
+    display: flex;
+    border-radius: 5%;
+    flex-direction: column;
+    width: 20rem;
+    font-size: 30px;
+    text-align: center;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 5%;
+    box-shadow: 5px 5px 5px black;
+}
+.registerButton {
+    width: 20rem;
+    height: 30rem;
+    border-radius: 5%;
+    border: none;
+    background-image: url(/images/blacksnow.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -7rem;
+    color: white;
+    font-size: 50px;
+    text-shadow: 5px 5px 10px grey;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+.registerButton:hover {
+    cursor: pointer;
+    color: black;
+    text-shadow: 5px 5px 10px grey;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(/images/whitesnow.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -7rem;
 }
 
 @keyframes shake {

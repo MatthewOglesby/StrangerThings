@@ -1,10 +1,36 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { deletePost } from '../api';
+import { Link, Navigate } from 'react-router-dom';
+import { deletePost, createMessage } from '../api';
+import { useParams } from 'react-router-dom';
 
-const Posts = ({ posts, token }) => { // by putting our posts as our parameter, it destructures our posts and sets it as a prop
+const SendMessage = ({ postID, token, }) => {
+    const [message, setMessage] = useState({ content: '' })
 
+    // three things to make this request 
+    // post id, token, message object containing content of message
+    async function addMessage() {
+        await createMessage({ postID, message, token })
+    }
+
+    return (
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            addMessage();
+        }}>
+            <input
+                type='text'
+                placeholder='Enter Message'
+                onChange={(event) => setMessage({ content: event.target.value })}
+            />
+            <button type='submit'>Send Message</button>
+        </form>
+    )
+}
+
+const Posts = ({ posts, token, navigate, getMe }) => { // by putting our posts as our parameter, it destructures our posts and sets it as a prop
+    const [activateMessage, setActivateMessage] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
+    const { postID } = useParams();
 
     const postMatches = (post, string) => {
         const { title, description } = post;
@@ -19,23 +45,34 @@ const Posts = ({ posts, token }) => { // by putting our posts as our parameter, 
     const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
 
+
+
     return (
         <div className='postBodyWithSearch'>
-            <form 
-            className='searchForm'
+            <form
+                className='searchForm'
                 onSubmit={(event) => {
-                event.preventDefault();
-            }}>
+                    event.preventDefault();
+                }}>
                 <input
-                className='postSearch'
+                    className='postSearch'
                     type='text'
                     placeholder='Enter Search Here'
                     onChange={(event) => setSearchTerm(event.target.value)}
                 />
                 <button type='submit' className='searchButton'>Search</button>
             </form>
-            
             <div className='postBody'>
+                {
+                    token ? (
+                        <div className='addButtonContainer'>
+                            <button className='addButton' onClick={() => navigate('/posts/create-post')} />
+                        </div>
+
+                    ) : (
+                        <p></p>
+                    )
+                }
                 {
                     postsToDisplay.map((post) => {
                         const { description, location, title, price, _id, isAuthor } = post;
@@ -60,9 +97,6 @@ const Posts = ({ posts, token }) => { // by putting our posts as our parameter, 
 
                                         ) : (
                                             <div className='buttonContainer'>
-                                                <button className='deletePost'>
-                                                    Message
-                                                </button>
                                                 <button id='linkToSPV2'>
                                                     <Link to={`/posts/${_id}`} id='linkToSPV'>
                                                         View

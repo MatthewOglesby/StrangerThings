@@ -14,7 +14,7 @@ const Login = ({ setToken, navigate }) => {
             setToken(results.data.token)
             console.log(results);
             window.localStorage.setItem('token', results.data.token);
-            navigate('/home');
+            navigate('/');
         } else {
             console.log(results.error.message)
             loginForm.style.animation = 'shake 0.5s'
